@@ -73,8 +73,12 @@ public class Game : MonoBehaviour
         {            
             //Применение свойств до атаки
             GameObject Attacker = Army.transform.GetChild(i).gameObject;
-            yield return StartCoroutine(SpawnHit(Attacker.transform.position,IEnemy.transform.position));            
-            enemy.GetHit(Attacker.GetComponent<CardInfo>().SelfCard.Damage);            
+            //Игнорирование юнитов с атакой равной нулю
+            if (Attacker.GetComponent<CardInfo>().SelfCard.Damage != 0)
+            {
+                yield return StartCoroutine(SpawnHit(Attacker.transform.position, IEnemy.transform.position));
+                enemy.GetHit(Attacker.GetComponent<CardInfo>().SelfCard.Damage);
+            }
             //Применение свойств после атаки
         }
         if (enemy.EnemyHealth == 0)
@@ -88,6 +92,8 @@ public class Game : MonoBehaviour
         int armyCount = Army.transform.childCount;
         for (int i = 0; i < armyCount; i++)
         {
+            //Проверка на нулевой урон
+            if (AttackValue <= 0) break;
             //Применение свойств до атаки
             GameObject Attacker = Army.transform.GetChild(0).gameObject;
             yield return StartCoroutine(SpawnHit(IEnemy.transform.position, Attacker.transform.position));
@@ -99,7 +105,6 @@ public class Game : MonoBehaviour
                 Attacker.transform.SetParent(discard);
             }
             //Применение свойств после атаки
-            if (AttackValue <= 0) break;      
         }
         //Примененние свойств после атаки (Общее) 
         if (AttackValue > 0) player.AttackPlayer(AttackValue);
