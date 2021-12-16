@@ -92,6 +92,8 @@ public class Game : MonoBehaviour
         int armyCount = Army.transform.childCount;
         for (int i = 0; i < armyCount; i++)
         {
+            //Проверка на нулевой урон
+            if (AttackValue <= 0) break;
             //Применение свойств до атаки
             GameObject Attacker = Army.transform.GetChild(0).gameObject;
             yield return StartCoroutine(SpawnHit(IEnemy.transform.position, Attacker.transform.position));
@@ -103,7 +105,6 @@ public class Game : MonoBehaviour
                 Attacker.transform.SetParent(discard);
             }
             //Применение свойств после атаки
-            if (AttackValue <= 0) break;      
         }
         //Примененние свойств после атаки (Общее) 
         if (AttackValue > 0) player.AttackPlayer(AttackValue);
