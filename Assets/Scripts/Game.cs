@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
@@ -143,5 +144,13 @@ public class Game : MonoBehaviour
             yield return null;
         }
         s.transform.position = end;
+    }
+
+    /// <summary>
+    /// Функция перезагрузки игры
+    /// </summary>
+    public void ReloadGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
