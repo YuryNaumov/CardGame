@@ -118,7 +118,8 @@ public class Game : MonoBehaviour
         EndTurnButton.GetComponentInChildren<Text>().text = "Фаза ресурсов";
         //Тут должны быть броски кубиков для опрделения притока ресурсов
         //Пока по 1 всего
-        player.AddMana(1, 1, 1);
+        int x = Random.Range(1,4);
+        player.AddMana(x, 1, 1);
         //Добрать 1 карту
         player.DrawCard(IDeck.GetComponent<DeckManager>().GameDeck);
 
