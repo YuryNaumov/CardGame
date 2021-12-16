@@ -73,8 +73,12 @@ public class Game : MonoBehaviour
         {            
             //Применение свойств до атаки
             GameObject Attacker = Army.transform.GetChild(i).gameObject;
-            yield return StartCoroutine(SpawnHit(Attacker.transform.position,IEnemy.transform.position));            
-            enemy.GetHit(Attacker.GetComponent<CardInfo>().SelfCard.Damage);            
+            //Игнорирование юнитов с атакой равной нулю
+            if (Attacker.GetComponent<CardInfo>().SelfCard.Damage != 0)
+            {
+                yield return StartCoroutine(SpawnHit(Attacker.transform.position, IEnemy.transform.position));
+                enemy.GetHit(Attacker.GetComponent<CardInfo>().SelfCard.Damage);
+            }
             //Применение свойств после атаки
         }
         if (enemy.EnemyHealth == 0)
