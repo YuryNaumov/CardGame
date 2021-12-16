@@ -31,6 +31,7 @@ public class Game : MonoBehaviour
         AllCards.Add(new Card("Чертёнок", "Малое зло", 1, 1, "Sprites/Cards/LittleHorn", new ManaCost(0, 0, 1), new ManaCost(0, 0, 2)));
         AllCards.Add(new Card("Королева бездны", "Меч тьмы", 3, 6, "Sprites/Cards/PitLord", new ManaCost(1, 1, 5), new ManaCost(0, 1, 2)));
         AllCards.Add(new Card("Снежная стая", "Вихрь стрел и клыков", 2, 2, "Sprites/Cards/SnowPack", new ManaCost(1, 1, 1), new ManaCost(1, 1, 1)));
+        AllCards.Add(new Card("Крип", "Бесполезный", 0, 5, "Sprites/Cards/Creep", new ManaCost(0, 0, 1), new ManaCost(2, 1, 0)));
         //Особая карта Стенки
         WallCard = new Card("Стена", "На грани миров", 2, 0, "Sprites/Cards/Wall", new ManaCost(0, 1, 0), new ManaCost(0, 0, 0));
     }
